@@ -8,8 +8,8 @@ namespace Library.DAL.Models
 {
     internal class AuthorsToBooks
     {
-        int Id { get; set; }
-        Author AuthorAuthor { get; set; }
-        Book BookAuthorBook { get; set; }
+        public int Id { get; set; }
+        public Author AuthorAuthor { get; set; }
+        public Book BookAuthorBook { get; set; }
     }
 }
