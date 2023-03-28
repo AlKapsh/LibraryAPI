@@ -24,7 +24,7 @@ namespace Library.DAL.EFCore
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server= .;Database=LibraryDB;Trusted_Connection=True;");
+            optionsBuilder.UseSqlServer("Server= .;Database=LibraryDB;Trusted_Connection=True;TrustServerCertificate=Yes;");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
