@@ -17,14 +17,14 @@ namespace Library.DAL.EFCore
         public DbSet<Reader> Readers { get; set; }
 
 
-        public ApplicationLibraryContext(DbContextOptions options): base(options)
+        public ApplicationLibraryContext()
         {
             
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server= (localdb)\\mssqllocaldb;Database=LibraryDB;Trusted_Connection=True;");
+            optionsBuilder.UseSqlServer("Server= .;Database=LibraryDB;Trusted_Connection=True;");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
