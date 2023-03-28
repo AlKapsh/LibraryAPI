@@ -13,6 +13,6 @@ namespace Library.DAL.Contracts
         Task<Author> GetAllAsync();
 
         Task CreateReader(Reader reader);
-        Task DeleteReader(int id);
+        Task DeleteReader(Reader reader);
     }
 }

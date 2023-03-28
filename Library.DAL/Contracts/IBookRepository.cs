@@ -12,6 +12,6 @@ namespace Library.DAL.Contracts
         Task<Book> GetByIdAsync(int id);
         Task<Book> GetAllAsync();
         Task CreateBook(Book book);
-        Task DeleteBook(int id);
+        Task DeleteBook(Book book);
     }
 }
