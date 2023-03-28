@@ -1,13 +1,13 @@
 ﻿namespace Library.DAL.Models
 {
-    internal class Book
+    public class Book
     {
-        int Id { get; set; }
-        string Title { get; set; }
-        DateOnly ReleaseYear { get; set; }
-        int ISBN { get; set; }
-        int Quantity { get; set; }
-        List<Author> Authors { get; set; } = new();
-        Publisher Publisher { get; set; }
+        public int Id { get; set; }
+        public string Title { get; set; }
+        public DateTime ReleaseYear { get; set; }
+        public int ISBN { get; set; }
+        public int Quantity { get; set; }
+        public List<Author> Authors { get; set; } = new();
+        public Publisher Publisher { get; set; }
     }
 }

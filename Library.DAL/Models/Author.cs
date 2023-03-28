@@ -1,10 +1,10 @@
 ﻿namespace Library.DAL.Models
 {
-    internal class Author
+    public class Author
     {
-        int Id { get; set; }
-        string FistName { get; set; }
-        string SecondName { get; set; }
+        public int Id { get; set; }
+        public string FistName { get; set; }
+        public string SecondName { get; set; }
 
     }
 }

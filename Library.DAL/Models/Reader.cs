@@ -1,11 +1,11 @@
 ﻿namespace Library.DAL.Models
 {
-    internal class Reader
+    public class Reader
     {
-        int Id { get; set; }
-        string FirstName { get; set; }
-        string SecondName { get; set; }
-        string EMail { get; set; }
+        public int Id { get; set; }
+        public string FirstName { get; set; }
+        public string SecondName { get; set; }
+        public string EMail { get; set; }
 
     }
 }

@@ -1,12 +1,12 @@
 ﻿namespace Library.DAL.Models
 {
-    internal class Publisher
+    public class Publisher
     {
-        int Id { get; set; }
-        string Name { get; set; }
-        string Address { get; set; }
-        string EMail { get; set; }
-        string PhoneNumber { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Address { get; set; }
+        public string EMail { get; set; }
+        public string PhoneNumber { get; set; }
 
     }
 }
