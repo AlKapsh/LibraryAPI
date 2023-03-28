@@ -5,8 +5,8 @@
         public int Id { get; set; }
         public string FistName { get; set; }
         public string SecondName { get; set; }
-       
-        List<Book> Books { get; set; }
+
+        List<AuthorsToBooks> AuthorsToBooks { get; set; } = new();
 
     }
 }

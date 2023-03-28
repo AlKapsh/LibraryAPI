@@ -7,7 +7,7 @@
         public DateTime ReleaseYear { get; set; }
         public int ISBN { get; set; }
         public int Quantity { get; set; }
-        public List<Author> Authors { get; set; } = new();
+        List<AuthorsToBooks> AuthorsToBooks { get; set; } = new();
         public Publisher Publisher { get; set; }
     }
 }
