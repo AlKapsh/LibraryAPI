@@ -15,6 +15,7 @@ namespace Library.DAL.EFCore
         public DbSet<Issuance> Issuances { get; set; }
         public DbSet<Publisher> Publishers { get; set; }
         public DbSet<Reader> Readers { get; set; }
+        public DbSet<AuthorsToBooks> AuthorsToBooks { get; set; }
 
 
         public ApplicationLibraryContext()
