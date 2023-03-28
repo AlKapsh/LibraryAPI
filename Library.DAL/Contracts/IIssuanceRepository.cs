@@ -11,7 +11,7 @@ namespace Library.DAL.Contracts
     {
         Task<Issuance> GetByIdAsync(int id);
         Task<Issuance> GetAllAsync();
-        Task CreateIssuance(Issuance publisher);
-        Task DeleteIssuance(Issuance publisher);
+        void CreateIssuance(Issuance issuance);
+        void DeleteIssuance(Issuance issuance);
     }
 }

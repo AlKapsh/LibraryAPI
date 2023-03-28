@@ -11,7 +11,7 @@ namespace Library.DAL.Contracts
     {
         Task<Author> GetByIdAsync(int id);
         Task<Author> GetAllAsync();
-        Task CreateAuthorToBook(Author author);
-        Task DeleteAuthor(Author author);
+        void CreateAuthorToBook(Author author);
+        void DeleteAuthor(Author author);
     }
 }

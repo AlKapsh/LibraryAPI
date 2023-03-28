@@ -11,7 +11,7 @@ namespace Library.DAL.Contracts
     {
         Task<Publisher> GetByIdAsync(int id);
         Task<Publisher> GetAllAsync();
-        Task CreatePublisher(Publisher publisher);
-        Task DeletePublisher(Publisher publisher);
+        void CreatePublisher(Publisher publisher);
+        void DeletePublisher(Publisher publisher);
     }
 }

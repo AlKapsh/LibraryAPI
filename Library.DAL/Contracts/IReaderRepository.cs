@@ -9,10 +9,10 @@ namespace Library.DAL.Contracts
 {
     internal interface IReaderRepository
     {
-        Task<Author> GetByIdAsync(int id);
-        Task<Author> GetAllAsync();
+        Task<Reader> GetByIdAsync(int id);
+        Task<Reader> GetAllAsync();
 
-        Task CreateReader(Reader reader);
-        Task DeleteReader(Reader reader);
+        void CreateReader(Reader reader);
+        void DeleteReader(Reader reader);
     }
 }
