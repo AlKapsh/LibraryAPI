@@ -10,7 +10,7 @@ namespace Library.DAL.Contracts
     internal interface IIssuanceRepository
     {
         Task<Issuance> GetByIdAsync(int id);
-        Task<Issuance> GetAllAsync();
+        Task<List<Issuance>> GetAllAsync();
         void CreateIssuance(Issuance issuance);
         void DeleteIssuance(Issuance issuance);
     }

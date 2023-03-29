@@ -10,7 +10,7 @@ namespace Library.DAL.Contracts
     internal interface IPublisherRepository
     {
         Task<Publisher> GetByIdAsync(int id);
-        Task<Publisher> GetAllAsync();
+        Task<List<Publisher>> GetAllAsync();
         void CreatePublisher(Publisher publisher);
         void DeletePublisher(Publisher publisher);
     }

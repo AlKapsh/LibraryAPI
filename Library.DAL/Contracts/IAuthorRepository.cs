@@ -10,7 +10,7 @@ namespace Library.DAL.Contracts
     internal interface IAuthorRepository
     {
         Task<Author> GetByIdAsync(int id);
-        Task<Author> GetAllAsync();
+        Task<List<Author>> GetAllAsync();
         void CreateAuthorToBook(Author author);
         void DeleteAuthor(Author author);
     }

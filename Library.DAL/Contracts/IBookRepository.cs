@@ -10,7 +10,7 @@ namespace Library.DAL.Contracts
     internal interface IBookRepository
     {
         Task<Book> GetByIdAsync(int id);
-        Task<Book> GetAllAsync();
+        Task<List<Book>> GetAllAsync();
         void CreateBook(Book book);
         void DeleteBook(Book book);
     }

@@ -10,7 +10,7 @@ namespace Library.DAL.Contracts
     internal interface IReaderRepository
     {
         Task<Reader> GetByIdAsync(int id);
-        Task<Reader> GetAllAsync();
+        Task<List<Reader>> GetAllAsync();
 
         void CreateReader(Reader reader);
         void DeleteReader(Reader reader);

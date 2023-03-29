@@ -10,7 +10,7 @@ namespace Library.DAL.Contracts
     internal interface IAuthorEnrollments
     {
         Task<AuthorsToBooks> GetByIdAsync(int id);
-        Task<AuthorsToBooks> GetAllAsync();
+        Task<List<AuthorsToBooks>> GetAllAsync();
         void CreateAuthorToBook(AuthorsToBooks authorsToBooks);
         void DeleteAuthorToBook(AuthorsToBooks authorsToBooks);
     }
