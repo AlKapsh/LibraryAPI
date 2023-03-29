@@ -24,9 +24,9 @@ namespace Library.DAL.Repository
 
         public void Delete(T item) => libraryContext.Set<T>().Remove(item);
 
-        public IQueryable<T> GetAll() => libraryContext.Set<T>();
+        public IQueryable<T> FindAll() => libraryContext.Set<T>();
 
-        public IQueryable<T> GetByCondition(Expression<Func<T, bool>> expression) => libraryContext.Set<T>().Where(expression);
+        public IQueryable<T> FindByCondition(Expression<Func<T, bool>> expression) => libraryContext.Set<T>().Where(expression);
 
     }
 }
