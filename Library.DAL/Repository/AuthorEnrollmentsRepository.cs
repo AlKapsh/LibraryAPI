@@ -24,8 +24,9 @@ namespace Library.DAL.Repository
             throw new NotImplementedException();
         }
 
-        public async Task<AuthorsToBooks> GetAllAsync() => await GetAllAsync();
+        public async Task<List<AuthorsToBooks>> GetAllAsync() => await FindAll().ToListAsync();
 
-        public async Task<AuthorsToBooks> GetByIdAsync(int id) => await GetByCondition(item => item.Id.Equals(id)).SingleOrDefaultAsync();
+        public async Task<AuthorsToBooks> GetByIdAsync(int id) => 
+            await FindByCondition(item => item.Id.Equals(id)).SingleOrDefaultAsync();
     }
 }

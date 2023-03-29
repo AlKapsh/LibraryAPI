@@ -19,9 +19,9 @@ namespace Library.DAL.Repository
 
         public void DeleteIssuance(Issuance issuance) => Delete(issuance);
 
-        public async Task<Issuance> GetAllAsync() => await GetAllAsync();
+        public async Task<List<Issuance>> GetAllAsync() => await FindAll().ToListAsync();
 
         public async Task<Issuance> GetByIdAsync(int id) => 
-            await GetByCondition(issuance => issuance.Id.Equals(id)).SingleOrDefaultAsync();
+            await FindByCondition(issuance => issuance.Id.Equals(id)).SingleOrDefaultAsync();
     }
 }

@@ -19,10 +19,10 @@ namespace Library.DAL.Repository
 
         public void DeleteBook(Book book) => Delete(book);
 
-        public async Task<Book> GetAllAsync() => await GetAllAsync();
+        public async Task<List<Book>> GetAllAsync() => await FindAll().ToListAsync();
 
         public async Task<Book> GetByIdAsync(int id) => 
-            await GetByCondition(book => book.Id.Equals(id)).SingleOrDefaultAsync();
+            await FindByCondition(book => book.Id.Equals(id)).SingleOrDefaultAsync();
 
     }
 }

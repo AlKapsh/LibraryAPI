@@ -17,9 +17,9 @@ namespace Library.DAL.Repository
 
         public void DeletePublisher(Publisher publisher) => Delete(publisher);
 
-        public async Task<Publisher> GetAllAsync() => await GetAllAsync();
+        public async Task<List<Publisher>> GetAllAsync() => await FindAll().ToListAsync();
 
         public async Task<Publisher> GetByIdAsync(int id) => 
-            await GetByCondition(publisher => publisher.Id.Equals(id)).SingleOrDefaultAsync();
+            await FindByCondition(publisher => publisher.Id.Equals(id)).SingleOrDefaultAsync();
     }
 }

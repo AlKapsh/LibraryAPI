@@ -18,9 +18,9 @@ namespace Library.DAL.Repository
 
         public void DeleteReader(Reader reader) => Delete(reader);
 
-        public async Task<Reader> GetAllAsync() => await GetAllAsync();
+        public async Task<List<Reader>> GetAllAsync() => await FindAll().ToListAsync();
 
         public async Task<Reader> GetByIdAsync(int id) => 
-            await GetByCondition(reader => reader.Id.Equals(id)).SingleOrDefaultAsync();
+            await FindByCondition(reader => reader.Id.Equals(id)).SingleOrDefaultAsync();
     }
 }

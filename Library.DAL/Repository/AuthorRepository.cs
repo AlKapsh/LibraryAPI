@@ -19,9 +19,9 @@ namespace Library.DAL.Repository
 
         public void DeleteAuthor(Author author) => Delete(author);
 
-        public async Task<Author> GetAllAsync() => await GetAllAsync();
+        public async Task<List<Author>> GetAllAsync() => await FindAll().ToListAsync();
 
         public async Task<Author> GetByIdAsync(int id) => 
-            await GetByCondition(author => author.Id.Equals(id)).SingleOrDefaultAsync();
+            await FindByCondition(author => author.Id.Equals(id)).SingleOrDefaultAsync();
     }
 }
