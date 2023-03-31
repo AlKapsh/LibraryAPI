@@ -1,5 +1,6 @@
 ﻿using Library.DAL.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +18,6 @@ namespace Library.DAL.EFCore
         public DbSet<Reader> Readers { get; set; }
         public DbSet<AuthorsToBooks> AuthorsToBooks { get; set; }
 
-
         public ApplicationLibraryContext()
         {
             
@@ -25,7 +25,12 @@ namespace Library.DAL.EFCore
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server= .;Database=LibraryDB;Trusted_Connection=True;TrustServerCertificate=Yes;");
+            IConfigurationRoot configuration = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettigs.json")
+                .Build();
+
+            optionsBuilder.UseSqlServer(configuration.GetConnectionString("sqlConnection"));
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
