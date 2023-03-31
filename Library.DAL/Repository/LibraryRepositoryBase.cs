@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Library.DAL.Repository
 {
-    internal class LibraryRepositoryBase<T> : ILibraryRepositoryBase<T> where T: class
+    internal abstract class LibraryRepositoryBase<T> : ILibraryRepositoryBase<T> where T: class
     {
         protected ApplicationLibraryContext libraryContext;
 
