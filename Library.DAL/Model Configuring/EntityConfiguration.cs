@@ -47,6 +47,8 @@ namespace Library.DAL.EFCore
                 .IsRequired();
 
             builder.HasMany(prop => prop.Authors).WithMany(b => b.Books);
+
+            builder.HasOne(b => b.Publisher).WithMany(c => c.Books);
         }
 
     }
@@ -72,7 +74,7 @@ namespace Library.DAL.EFCore
                 .HasMaxLength(13)
                 .IsRequired();
 
-            builder.HasMany(b => b.Books).WithMany(c => c.Publishers);
+            builder.HasMany(b => b.Books).WithOne(c => c.Publisher);
         }
 
     }
