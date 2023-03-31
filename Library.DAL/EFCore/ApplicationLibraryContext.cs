@@ -16,7 +16,6 @@ namespace Library.DAL.EFCore
         public DbSet<Issuance> Issuances { get; set; }
         public DbSet<Publisher> Publishers { get; set; }
         public DbSet<Reader> Readers { get; set; }
-        public DbSet<AuthorsToBooks> AuthorsToBooks { get; set; }
 
         public ApplicationLibraryContext()
         {
@@ -31,11 +30,17 @@ namespace Library.DAL.EFCore
                 .Build();
 
             optionsBuilder.UseSqlServer(configuration.GetConnectionString("sqlConnection"));
+
+            
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
+            modelBuilder.ApplyConfiguration(new AutorConfiguration());
+            modelBuilder.ApplyConfiguration(new BookConfiguration());
+            modelBuilder.ApplyConfiguration(new IssuanceConfiguration());
+            modelBuilder.ApplyConfiguration(new ReaderConfiguration());
+            modelBuilder.ApplyConfiguration(new PublisherConfiguration());
         }
     }
 }
