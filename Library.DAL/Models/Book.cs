@@ -6,8 +6,9 @@
         public string Title { get; set; }
         public DateTime ReleaseYear { get; set; }
         public int ISBN { get; set; }
-        public int Quantity { get; set; }
-        List<AuthorsToBooks> AuthorsToBooks { get; set; } = new();
-        public Publisher Publisher { get; set; }
+        public int? IssuanceId { get; set; }
+        public Issuance? Issuance { get; set; }
+        public List<Author> Authors { get; set; } = new();
+        public List<Publisher> Publishers { get; set; }
     }
 }

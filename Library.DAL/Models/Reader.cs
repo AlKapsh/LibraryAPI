@@ -6,6 +6,7 @@
         public string FirstName { get; set; }
         public string SecondName { get; set; }
         public string EMail { get; set; }
+        public List<Issuance> Issuances { get; set; }
 
     }
 }
