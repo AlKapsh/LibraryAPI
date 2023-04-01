@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Library.DAL.Repository
 {
-    internal class PublisherRepository : LibraryRepositoryBase<Publisher>, IPublisherRepository
+    internal class PublisherRepository : RepositoryBase<Publisher>, IPublisherRepository
     {
         public PublisherRepository(ApplicationLibraryContext libraryContext) : base(libraryContext) { }
         public void CreatePublisher(Publisher publisher) => Create(publisher);

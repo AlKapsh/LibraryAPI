@@ -17,7 +17,6 @@ namespace Library.DAL.Repository
         private IIssuanceRepository issuanceRepository;
         private IReaderRepository readerRepository;
         private IPublisherRepository publisherRepository;
-        private IAuthorEnrollments authorsToBookRepository;
 
         public LibraryRepositoryManager(ApplicationLibraryContext libraryContext)
         {
@@ -34,19 +33,6 @@ namespace Library.DAL.Repository
                 }
 
                 return authorRepository;
-            }
-        }
-
-        public IAuthorEnrollments AuthorsToBooks
-        {
-            get
-            {
-                if (authorsToBookRepository == null)
-                {
-                    authorsToBookRepository = new AuthorEnrollments(libraryContext);
-                }
-
-                return authorsToBookRepository;
             }
         }
 

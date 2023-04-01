@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Library.DAL.Repository
 {
-    internal class IssuanceRepository : LibraryRepositoryBase<Issuance>, IIssuanceRepository
+    internal class IssuanceRepository : RepositoryBase<Issuance>, IIssuanceRepository
     {
 
         public IssuanceRepository(ApplicationLibraryContext libraryContext) : base(libraryContext) { }

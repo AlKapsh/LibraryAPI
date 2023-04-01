@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Library.DAL.Repository
 {
-    internal class BookRepository : LibraryRepositoryBase<Book>, IBookRepository
+    internal class BookRepository : RepositoryBase<Book>, IBookRepository
     {
 
         public BookRepository(ApplicationLibraryContext libraryContext) : base(libraryContext) { }
@@ -21,8 +21,23 @@ namespace Library.DAL.Repository
 
         public async Task<List<Book>> GetAllAsync() => await FindAll().ToListAsync();
 
+        public List<Author> GetAuthors(Book book)
+        {
+            List<Author> authors = new();
+
+            foreach(var item in book.AuthorsToBooks)
+            {
+               authors.Add(item.AuthorAuthor);
+            }
+
+            return authors;
+        }
+
         public async Task<Book> GetByIdAsync(int id) => 
-            await FindByCondition(book => book.Id.Equals(id)).SingleOrDefaultAsync();
+            await FindByCondition(book => book.Id.Equals(id))
+            .Include(b => b.AuthorsToBooks)
+            .ThenInclude(a => a.AuthorAuthor)
+            .SingleOrDefaultAsync();
 
     }
 }

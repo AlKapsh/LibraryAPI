@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Library.DAL.Repository
 {
-    internal class ReaderRepository : LibraryRepositoryBase<Reader>, IReaderRepository
+    internal class ReaderRepository : RepositoryBase<Reader>, IReaderRepository
     {
         public ReaderRepository(ApplicationLibraryContext libraryContext) : base(libraryContext) { }
         public void CreateReader(Reader reader) => Create(reader);
