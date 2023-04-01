@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Library.DAL.Models
 {
-    internal class AuthorsToBooks
+    public class AuthorsToBooks
     {
         public int Id { get; set; }
         public Author AuthorAuthor { get; set; }

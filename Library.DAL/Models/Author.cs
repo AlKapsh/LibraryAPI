@@ -6,7 +6,7 @@
         public string FistName { get; set; }
         public string SecondName { get; set; }
 
-        List<AuthorsToBooks> AuthorsToBooks { get; set; } = new();
+        public List<AuthorsToBooks> AuthorsToBooks { get; set; } = new();
 
     }
 }
