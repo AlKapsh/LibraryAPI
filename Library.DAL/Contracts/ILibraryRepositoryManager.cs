@@ -9,7 +9,6 @@ namespace Library.DAL.Contracts
     internal interface ILibraryRepositoryManager
     {
         IAuthorRepository Author { get; }
-        IAuthorEnrollments AuthorsToBooks { get; }
         IBookRepository Book { get; }
         IIssuanceRepository Issuance { get; }
         IPublisherRepository Publisher { get; }

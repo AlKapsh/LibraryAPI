@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Library.DAL.Contracts
 {
-    internal interface IIssuanceRepository
+    internal interface IIssuanceRepository : IRepositoryBase<Issuance>
     {
         Task<Issuance> GetByIdAsync(int id);
         Task<List<Issuance>> GetAllAsync();

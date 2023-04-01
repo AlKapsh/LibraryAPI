@@ -11,8 +11,8 @@ namespace Library.DAL.Contracts
     {
         Task<Reader> GetByIdAsync(int id);
         Task<List<Reader>> GetAllAsync();
-
         void CreateReader(Reader reader);
         void DeleteReader(Reader reader);
+
     }
 }

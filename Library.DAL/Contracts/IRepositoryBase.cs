@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Library.DAL.Contracts
 {
-    internal interface ILibraryRepositoryBase<T>
+    internal interface IRepositoryBase<T>
     {
         IQueryable<T> FindAll();
         IQueryable<T> FindByCondition(Expression<Func<T, bool>> expression);

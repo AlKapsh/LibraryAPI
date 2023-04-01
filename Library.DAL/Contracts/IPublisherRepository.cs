@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Library.DAL.Contracts
 {
-    internal interface IPublisherRepository
+    internal interface IPublisherRepository : IRepositoryBase<Publisher>
     {
         Task<Publisher> GetByIdAsync(int id);
         Task<List<Publisher>> GetAllAsync();

@@ -7,11 +7,12 @@ using System.Threading.Tasks;
 
 namespace Library.DAL.Contracts
 {
-    internal interface IAuthorRepository
+    internal interface IAuthorRepository : IRepositoryBase<Author>
     {
         Task<Author> GetByIdAsync(int id);
         Task<List<Author>> GetAllAsync();
         void CreateAuthorToBook(Author author);
         void DeleteAuthor(Author author);
+        List<Book> GetAllBooks(Author author);
     }
 }
