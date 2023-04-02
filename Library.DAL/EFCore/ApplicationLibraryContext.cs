@@ -1,4 +1,5 @@
-﻿using Library.DAL.Models;
+﻿using Library.DAL.Extensions;
+using Library.DAL.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System;
@@ -24,25 +25,12 @@ namespace Library.DAL.EFCore
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            IConfigurationRoot configuration = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettigs.json")
-                .Build();
-
-            optionsBuilder.UseSqlServer(configuration.GetConnectionString("sqlConnection"));
-
-            
+            optionsBuilder.ConfigureSql();
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfiguration(new AutorConfiguration());
-            modelBuilder.ApplyConfiguration(new BookConfiguration());
-            modelBuilder.ApplyConfiguration(new AutorsToBookConfiguration());
-            modelBuilder.ApplyConfiguration(new IssuanceConfiguration());
-            modelBuilder.ApplyConfiguration(new ReaderConfiguration());
-            modelBuilder.ApplyConfiguration(new PublisherConfiguration());
-            
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationLibraryContext).Assembly);
         }
     }
 }
