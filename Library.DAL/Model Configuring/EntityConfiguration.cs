@@ -14,17 +14,34 @@ namespace Library.DAL.EFCore
     {
         public void Configure(EntityTypeBuilder<Author> builder)
         {
-            builder.HasKey(b => b.Id);
+            builder.HasKey(a=> a.Id);
 
-            builder.Property(prop => prop.FistName)
+            builder.Property(a => a.FistName)
                 .IsRequired()
                 .HasMaxLength(30);
 
-            builder.Property(prop => prop.SecondName)
+            builder.Property(a => a.SecondName)
                 .IsRequired()
                 .HasMaxLength(30);
+        }
 
-            builder.HasMany(prop => prop.Books).WithMany(b => b.Authors);
+    }
+
+    internal class AutorsToBookConfiguration : IEntityTypeConfiguration<AuthorToBook>
+    {
+        public void Configure(EntityTypeBuilder<AuthorToBook> builder)
+        {
+            builder.HasKey(a => a.Id);
+
+            builder.Property(a => a.AuthorId)
+                .IsRequired();
+
+            builder.Property(a => a.BookId)
+                .IsRequired();
+
+            builder.HasOne(b => b.Author).WithMany(a => a.AuthorsToBooks);
+            builder.HasOne(b => b.Book).WithMany(a => a.AuthorsToBooks);
+
         }
 
     }
@@ -46,9 +63,8 @@ namespace Library.DAL.EFCore
             builder.Property(prop => prop.ISBN)
                 .IsRequired();
 
-            builder.HasMany(prop => prop.Authors).WithMany(b => b.Books);
-
             builder.HasOne(b => b.Publisher).WithMany(c => c.Books);
+            builder.HasOne(b => b.Issuance).WithOne(i => i.Book);
         }
 
     }

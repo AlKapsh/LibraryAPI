@@ -38,9 +38,11 @@ namespace Library.DAL.EFCore
         {
             modelBuilder.ApplyConfiguration(new AutorConfiguration());
             modelBuilder.ApplyConfiguration(new BookConfiguration());
+            modelBuilder.ApplyConfiguration(new AutorsToBookConfiguration());
             modelBuilder.ApplyConfiguration(new IssuanceConfiguration());
             modelBuilder.ApplyConfiguration(new ReaderConfiguration());
             modelBuilder.ApplyConfiguration(new PublisherConfiguration());
+            
         }
     }
 }

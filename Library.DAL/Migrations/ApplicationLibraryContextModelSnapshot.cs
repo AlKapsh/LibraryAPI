@@ -22,21 +22,6 @@ namespace Library.DAL.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("AuthorBook", b =>
-                {
-                    b.Property<int>("AuthorsId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("BooksId")
-                        .HasColumnType("int");
-
-                    b.HasKey("AuthorsId", "BooksId");
-
-                    b.HasIndex("BooksId");
-
-                    b.ToTable("AuthorBook");
-                });
-
             modelBuilder.Entity("Library.DAL.Models.Author", b =>
                 {
                     b.Property<int>("Id")
@@ -58,6 +43,29 @@ namespace Library.DAL.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Authors");
+                });
+
+            modelBuilder.Entity("Library.DAL.Models.AuthorToBook", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("AuthorId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("BookId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AuthorId");
+
+                    b.HasIndex("BookId");
+
+                    b.ToTable("AuthorToBook");
                 });
 
             modelBuilder.Entity("Library.DAL.Models.Book", b =>
@@ -179,19 +187,23 @@ namespace Library.DAL.Migrations
                     b.ToTable("Readers");
                 });
 
-            modelBuilder.Entity("AuthorBook", b =>
+            modelBuilder.Entity("Library.DAL.Models.AuthorToBook", b =>
                 {
-                    b.HasOne("Library.DAL.Models.Author", null)
-                        .WithMany()
-                        .HasForeignKey("AuthorsId")
+                    b.HasOne("Library.DAL.Models.Author", "Author")
+                        .WithMany("AuthorsToBooks")
+                        .HasForeignKey("AuthorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Library.DAL.Models.Book", null)
-                        .WithMany()
-                        .HasForeignKey("BooksId")
+                    b.HasOne("Library.DAL.Models.Book", "Book")
+                        .WithMany("AuthorsToBooks")
+                        .HasForeignKey("BookId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Author");
+
+                    b.Navigation("Book");
                 });
 
             modelBuilder.Entity("Library.DAL.Models.Book", b =>
@@ -220,6 +232,16 @@ namespace Library.DAL.Migrations
                         .IsRequired();
 
                     b.Navigation("Reader");
+                });
+
+            modelBuilder.Entity("Library.DAL.Models.Author", b =>
+                {
+                    b.Navigation("AuthorsToBooks");
+                });
+
+            modelBuilder.Entity("Library.DAL.Models.Book", b =>
+                {
+                    b.Navigation("AuthorsToBooks");
                 });
 
             modelBuilder.Entity("Library.DAL.Models.Issuance", b =>

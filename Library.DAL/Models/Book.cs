@@ -8,7 +8,7 @@
         public int ISBN { get; set; }
         public int? IssuanceId { get; set; }
         public Issuance? Issuance { get; set; }
-        public List<Author> Authors { get; set; }
+        public List<AuthorToBook> AuthorsToBooks { get; set; }
         public Publisher Publisher { get; set; }
     }
 }
