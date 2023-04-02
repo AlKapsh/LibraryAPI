@@ -21,22 +21,20 @@ namespace Library.DAL.Repository
 
         public void DeleteAuthor(Author author) => Delete(author);
 
-        public async Task<List<Author>> GetAllAsync() => await FindAll().ToListAsync();
+        public async Task<List<Author>> GetAllAsync() => await GetAll().ToListAsync();
 
-        public List<Book> GetAllBooks(Author author)
+        public IQueryable<Author> GetAllBooks(int bookId)
         {
-            List<Book> books = new();
-
-            foreach(var item in author.AuthorsToBooks)
-            {
-                books.Add(item.BookAuthorBook);
-            }
-
-            return books;
+            return GetAll()
+                .Include(a => a.AuthorsToBooks)
+                    .ThenInclude(ad => ad.BookAuthorBook)
+                .Where(ab => ab.AuthorsToBooks
+                    .All(b => b.BookAuthorBook.Id.Equals(bookId)))
+                .AsQueryable();
         }
 
         public async Task<Author> GetByIdAsync(int id) => 
-            await FindByCondition(author => author.Id.Equals(id))
+            await GetById(author => author.Id.Equals(id))
             .Include(a => a.AuthorsToBooks)
             .ThenInclude(b => b.BookAuthorBook)
             .SingleOrDefaultAsync();

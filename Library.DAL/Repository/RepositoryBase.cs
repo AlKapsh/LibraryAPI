@@ -26,8 +26,8 @@ namespace Library.DAL.Repository
 
         public void Delete(T item) => context.Set<T>().Remove(item);
 
-        public IQueryable<T> FindAll() => context.Set<T>();
+        public IQueryable<T> GetAll() => context.Set<T>();
 
-        public IQueryable<T> FindByCondition(Expression<Func<T, bool>> expression) => context.Set<T>().Where(expression);
+        public IQueryable<T> GetById(Expression<Func<T, bool>> expression) => context.Set<T>().Where(expression);
     }
 }

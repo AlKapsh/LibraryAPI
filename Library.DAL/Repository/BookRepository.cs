@@ -34,7 +34,7 @@ namespace Library.DAL.Repository
         }
 
         public async Task<Book> GetByIdAsync(int id) => 
-            await FindByCondition(book => book.Id.Equals(id))
+            await GetById(book => book.Id.Equals(id))
             .Include(b => b.AuthorsToBooks)
             .ThenInclude(a => a.AuthorAuthor)
             .SingleOrDefaultAsync();
