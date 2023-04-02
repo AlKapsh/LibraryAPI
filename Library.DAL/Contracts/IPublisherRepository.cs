@@ -9,9 +9,6 @@ namespace Library.DAL.Contracts
 {
     internal interface IPublisherRepository : IRepositoryBase<Publisher>
     {
-        Task<Publisher> GetByIdAsync(int id);
-        Task<List<Publisher>> GetAllAsync();
-        void CreatePublisher(Publisher publisher);
-        void DeletePublisher(Publisher publisher);
+        
     }
 }

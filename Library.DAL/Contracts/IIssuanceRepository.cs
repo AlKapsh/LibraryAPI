@@ -9,9 +9,6 @@ namespace Library.DAL.Contracts
 {
     internal interface IIssuanceRepository : IRepositoryBase<Issuance>
     {
-        Task<Issuance> GetByIdAsync(int id);
-        Task<List<Issuance>> GetAllAsync();
-        void CreateIssuance(Issuance issuance);
-        void DeleteIssuance(Issuance issuance);
+    
     }
 }

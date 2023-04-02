@@ -9,8 +9,8 @@ namespace Library.DAL.Contracts
 {
     internal interface IRepositoryBase<T>
     {
-        IQueryable<T> FindAll();
-        IQueryable<T> FindByCondition(Expression<Func<T, bool>> expression);
+        IQueryable<T> GetAll();
+        IQueryable<T> GetById(Expression<Func<T, bool>> expression);
         void Create(T item);
         void Update(T item);
         void Delete(T item);

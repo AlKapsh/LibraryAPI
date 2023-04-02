@@ -7,12 +7,8 @@ using System.Threading.Tasks;
 
 namespace Library.DAL.Contracts
 {
-    internal interface IReaderRepository
+    internal interface IReaderRepository : IRepositoryBase<Reader>
     {
-        Task<Reader> GetByIdAsync(int id);
-        Task<List<Reader>> GetAllAsync();
-        void CreateReader(Reader reader);
-        void DeleteReader(Reader reader);
 
     }
 }
