@@ -1,10 +1,5 @@
 ﻿using Library.DAL.Contracts;
 using Library.DAL.EFCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Library.DAL.Repository
 {

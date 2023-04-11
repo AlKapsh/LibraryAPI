@@ -1,26 +1,17 @@
 ﻿using Library.DAL.Contracts;
 using Library.DAL.EFCore;
 using Library.DAL.Models;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Collections.Immutable;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Library.DAL.Repository
 {
     internal class ReaderRepository : RepositoryBase<Reader>, IReaderRepository
     {
         public ReaderRepository(ApplicationLibraryContext libraryContext) : base(libraryContext) { }
-        public void CreateReader(Reader reader) => Create(reader);
 
-        public void DeleteReader(Reader reader) => Delete(reader);
-
-        public async Task<List<Reader>> GetAllAsync() =>  GetAll().ToList();
-
-        public async Task<Reader> GetByIdAsync(int id) => 
-            await GetById(reader => reader.Id.Equals(id)).SingleOrDefaultAsync();
+        public async Task<Reader> GetById(int id)
+        {
+            var reader = GetById(reader => reader.Id.Equals(id)).SingleOrDefault();
+            return reader;
+        }
     }
 }

@@ -1,13 +1,6 @@
 ﻿using Library.DAL.Contracts;
-using Library.DAL.EFCore;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Query.Internal;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Library.DAL.Repository
 {
@@ -26,8 +19,8 @@ namespace Library.DAL.Repository
 
         public void Delete(T item) => context.Set<T>().Remove(item);
 
-        public IQueryable<T> GetAll() => context.Set<T>();
+        public IEnumerable<T> GetAll() => context.Set<T>();
 
-        public IQueryable<T> GetById(Expression<Func<T, bool>> expression) => context.Set<T>().Where(expression);
+        public IEnumerable<T> GetById(Expression<Func<T, bool>> expression) => context.Set<T>().Where(expression);
     }
 }

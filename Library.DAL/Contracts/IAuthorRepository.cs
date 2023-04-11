@@ -1,14 +1,9 @@
 ﻿using Library.DAL.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Library.DAL.Contracts
 {
     public interface IAuthorRepository : IRepositoryBase<Author>
     {
-        IQueryable<Author> GetAllBooks(int bookId);
+        Task<List<Author>> GetAuthorsOfBook(int bookId);
     }
 }

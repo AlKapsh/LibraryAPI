@@ -2,13 +2,8 @@
 using Library.DAL.EFCore;
 using Library.DAL.Models;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Sockets;
-using System.Reflection.Metadata.Ecma335;
-using System.Text;
-using System.Threading.Tasks;
+
+
 
 namespace Library.DAL.Repository
 {
@@ -16,28 +11,20 @@ namespace Library.DAL.Repository
     {
 
         public AuthorRepository(ApplicationLibraryContext libraryContext) : base(libraryContext) { }
-        
-        public void CreateAuthorToBook(Author author) => Create(author);
 
-        public void DeleteAuthor(Author author) => Delete(author);
-
-        public async Task<IQueryable<Author>> GetAllAsync() =>  GetAll();
-
-        public IQueryable<Author> GetAllBooks(int bookId)
+        public async Task<List<Author>> GetAuthorsOfBook(int bookId)
         {
-            return GetAll()
+            var authors = await context.Set<Author>()
                 .Include(a => a.AuthorsToBooks)
-                    .ThenInclude(ad => ad.Book)
-                .Where(ab => ab.AuthorsToBooks
-                    .All(b => b.Book.Id.Equals(bookId)))
-                .AsQueryable();
+                .ThenInclude(ad => ad.Book)
+            .Where(ab => ab.AuthorsToBooks
+                .All(b => b.Book.Id.Equals(bookId))).ToListAsync();
+
+            return authors;
         }
 
-        public async Task<Author> GetByIdAsync(int id) => 
-            await GetById(author => author.Id.Equals(id))
-            .Include(a => a.AuthorsToBooks)
-            .ThenInclude(b => b.Book)
-            .SingleOrDefaultAsync();
+        public async Task<Author> GetByIdAsync(int id) =>
+            GetById(author => author.Id.Equals(id)).SingleOrDefault();
 
     }
 }
