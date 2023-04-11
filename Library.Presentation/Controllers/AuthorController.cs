@@ -11,7 +11,8 @@ namespace LibraryAPI.Controllers
     [ApiController]
     public class AuthorController : ControllerBase
     {
-        IAuthorService authorService;
+        private readonly IAuthorService authorService;
+
         public AuthorController(IAuthorService authorService)
         {
             this.authorService = authorService;
@@ -20,19 +21,24 @@ namespace LibraryAPI.Controllers
         [HttpGet]
         public IActionResult GetAuthors()
         {
-            return Ok(authorService.GetAllAuthors());
+            var authors = authorService.GetAllAuthors();
+
+            return Ok(authors);
         }
 
         [HttpGet("{id}")]
         public IActionResult AuthorById(int id)
         {
-            return Ok(authorService.GetAuthorById(id));
+            var author = authorService.GetAuthorById(id);
+
+            return Ok(author);
         }
 
         [HttpPost]
         public IActionResult PostAuthor([FromBody] AuthorDTO author)
         {
             authorService.CreateAuthor(author);
+
             return Created("Post", author);
         }
 
@@ -40,6 +46,7 @@ namespace LibraryAPI.Controllers
         public IActionResult DeleteAuthor(int id)
         {
             authorService.DeleteAuhtor(id);
+
             return Ok();
         }
 
@@ -47,6 +54,7 @@ namespace LibraryAPI.Controllers
         public IActionResult UpdateAuthor([FromQuery] int id ,[FromBody] AuthorDTO author)
         {
             authorService.UpdateAuthor(id, author);
+
             return Ok();
         }
     }
