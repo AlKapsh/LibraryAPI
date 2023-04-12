@@ -19,7 +19,7 @@ namespace LibraryAPI.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetAuthors()
+        public IActionResult<AuthorDTO> GetAuthors()
         {
             var authors = authorService.GetAllAuthors();
 
@@ -27,7 +27,7 @@ namespace LibraryAPI.Controllers
         }
 
         [HttpGet("{id}")]
-        public IActionResult AuthorById(int id)
+        public IActionResult<AuthorDTO> AuthorById(int id)
         {
             var author = authorService.GetAuthorById(id);
 
@@ -35,7 +35,7 @@ namespace LibraryAPI.Controllers
         }
 
         [HttpPost]
-        public IActionResult PostAuthor([FromBody] AuthorDTO author)
+        public IActionResult<AuthorDTO> PostAuthor([FromBody] AuthorDTO author)
         {
             authorService.CreateAuthor(author);
 
@@ -51,7 +51,7 @@ namespace LibraryAPI.Controllers
         }
 
         [HttpPut]
-        public IActionResult UpdateAuthor([FromQuery] int id ,[FromBody] AuthorDTO author)
+        public IActionResult<AuthorDTO> UpdateAuthor([FromQuery] int id ,[FromBody] AuthorDTO author)
         {
             authorService.UpdateAuthor(id, author);
 
